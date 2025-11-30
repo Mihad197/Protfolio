@@ -1,0 +1,1479 @@
+/* গ্লোবাল রিসেট এবং ডার্ক থিম */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+:root {
+    /* 1. LAYOUT & BACKGROUND COLORS (লেআউট এবং ব্যাকগ্রাউন্ড কালার) */
+    --clr-bg-main: #12121c;    /* প্রধান ব্যাকগ্রাউন্ড - গাঢ় নীল/বেগুনি টোন */
+    --clr-bg-card: #1a1a2e;    /* কার্ডের ব্যাকগ্রাউন্ড */
+    --clr-bg-modal: #0c1527;   /* মডেলের ভেতরের ব্যাকগ্রাউন্ড */
+
+    /* 2. TEXT & UTILITY COLORS (টেক্সট এবং সহায়ক কালার) */
+    --clr-text-primary: #ffffff; /* প্রাথমিক টেক্সট (সাদা) */
+    --clr-text-secondary: #ccc;  /* হালকা টেক্সট */
+    --clr-border: #333;          /* সাধারণ বর্ডার */
+    
+    /* 3. ACCENT & BRAND COLORS (অ্যাকসেন্ট এবং ব্র্যান্ড কালার) */
+    --clr-accent-start: #7f00ff; /* বেগুনি (Main Gradient Start) */
+    --clr-accent-end: #00bcd4;   /* সায়ান (Main Gradient End) */
+    --clr-accent-modal: #64ffda; /* সায়ান-সবুজ (Modal/Highlight) */
+    
+    /* 4. GRADIENT DEFINITIONS (গ্রেডিয়েন্ট সংজ্ঞায়ন) */
+    --gradient-main: linear-gradient(90deg, var(--clr-accent-start), var(--clr-accent-end)); 
+    --gradient-logo: linear-gradient(90deg, #ff00ea, #00e1ff, #00ff87, #ffd500, #ff6a00);
+}
+:root {
+    /* কালার ভেরিয়েবল */
+    --dark-bg: #121212;
+    --card-bg: #1a1a1a;
+    --text-color: #ffffff;
+    --light-gray: #ccc;
+    --border-color: #333;
+    --accent-color-start: #7f00ff; /* বেগুনি */
+    --accent-color-end: #00bcd4;   /* সায়ান */
+    --gradient-bg: linear-gradient(90deg, var(--accent-color-start), var(--accent-color-end));
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif; /* বা অন্য কোনো আধুনিক ফন্ট */
+    background-color: #121c33;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* অনুভূমিক স্ক্রল এড়ানোর জন্য */
+}
+
+
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    color: var(--accent-color-end);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--light-gray);
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+
+/* --- হেডার স্টাইল --- */
+.main-header {
+    background-color: rgba(18, 18, 18, 0.95);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Aurora Gradient */
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: inline-block;
+    background: var(--gradient-logo);
+    background-size: 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: aurora 6s infinite linear;
+}
+
+@keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}/* Mobile menu overlay */
+@media (max-width: 768px) {
+    #nav-list {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px; /* header height অনুযায়ী */
+        right: 0;
+        background: rgba(0,0,0,0.95); /* পেছনের background dark/transparent */
+        padding: 15px 20px;
+        border-radius: 5px;
+        width: max-content;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        z-index: 1000; /* সব উপরের দিকে show হবে */
+    }
+
+    #nav-list.show {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+/* সাধারণ লিংকের বেস স্টাইল */
+.main-nav ul li a {
+    color: var(--clr-text-primary);
+    text-decoration: none;
+    padding: 10px 15px; /* নরমাল প্যাডিং */
+    transition: all 0.3s ease-in-out; 
+    position: relative;
+    /* নিশ্চিত করা হলো যে কোনো বাটন স্টাইল ডিফল্টভাবে নেই */
+    background: none !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+
+/* লিংকে হোভার করলে কালার অ্যাকসেন্ট */
+.main-nav ul li a:not(.active-btn-style):hover {
+    color: var(--clr-accent-end);
+}
+
+/* আন্ডারলাইন স্টাইল (নরমাল এবং হোভারের জন্য) */
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-main);
+    transition: width 0.3s ease-in-out;
+}
+
+
+
+/* হোভার বা আন্ডারলাইন সক্রিয় হলে */
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 70%;
+}
+
+
+/* ========================================================= */
+/* Permanent Active Button Style (স্থায়ী বাটন স্টাইল) */
+/* ========================================================= */
+
+/* এই ক্লাসটি JS দ্বারা ক্লিক করা লিংকে যোগ হবে এবং সেটিকে বাটনে পরিণত করবে */
+.main-nav ul li a.active-btn-style { 
+    /* বাটনের মূল স্টাইল: গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
+    background: var(--gradient-main) !important; 
+    color: var(--clr-text-primary) !important; /* টেক্সট কালার সাদা নিশ্চিত করতে */
+    
+    padding: 8px 20px !important; /* বাটনের মতো প্যাডিং */
+    border-radius: 5px !important; 
+    margin-left: 15px !important; /* বাটনের জন্য মার্জিন */
+    font-weight: bold;
+    
+    /* সক্রিয় বাটন হওয়ার কারণে ট্রানজিশন এবং হোভার শ্যাডো যোগ করা */
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(127, 0, 255, 0.4);
+    transition: all 0.3s ease; 
+}
+
+/* যখন এটি active হবে, তখন আন্ডারলাইন লুকানো হবে */
+.main-nav ul li a.active-btn-style::after {
+    display: none !important;
+}
+
+/* active-btn-style এ হোভার করলে আলাদা স্টাইল */
+.main-nav ul li a.active-btn-style:hover {
+    /* হোভার কালার পরিবর্তন বন্ধ করা */
+    color: var(--clr-text-primary) !important; 
+    /* ট্রান্সফর্ম পরিবর্তন */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(127, 0, 255, 0.6);
+}
+
+/* ========================================================= */
+/* Contact Button Specific Adjustments (Contact বাটন) */
+/* ========================================================= */
+
+/* Contact বাটনের বেস স্টাইল - এটি এখন নরমাল লিংকের মতো */
+.contact-btn {
+    /* এটি নিশ্চিত করবে যে Contact বাটনও active না থাকলে নরমাল লিংক থাকবে */
+    background: none !important; 
+    color: var(--clr-text-primary) !important;
+    
+    /* নরমাল লিংকের মতো প্যাডিং/মার্জিন */
+    padding: 10px 15px !important;
+    margin-left: 0 !important;
+    
+    /* বাটনের স্টাইল ডিফল্টভাবে বাতিল */
+    border-radius: 0 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Contact বাটন হোভার করলে নরমাল লিংকের মতো রং পাবে */
+.contact-btn:hover {
+    color: var(--clr-accent-end) !important;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: inline-block;
+
+    background: linear-gradient(90deg,
+        #ff00ea,
+        #00e1ff,
+        #00ff87,
+        #ffd500,
+        #ff6a00);
+    background-size: 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    animation: aurora 6s infinite linear;
+}
+
+@keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Mobile hamburger icon */
+@media (max-width: 768px) {
+  #mobile-menu-btn {
+    display: block !important;  /* Mobile এ দেখাবে */
+    color: #fff;                /* Icon color (white) */
+    background: transparent;    
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
+/* Mobile view এ hamburger button দেখানোর জন্য */
+@media (max-width: 768px) {
+  #mobile-menu-btn {
+    display: block !important;
+    position: relative; /* যদি overlay সমস্যা থাকে */
+    z-index: 999;       /* সব উপরের দিকে থাকবে */
+  }
+}
+
+
+/* --- হিরো সেকশন --- */
+.hero-section {
+    padding: 20px 0;
+    background-image: url('https://via.placeholder.com/1920x800/0a0a0a/0a0a0a?text='); /* ব্যাকগ্রাউন্ড ইমেজ */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banners {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    min-height: 350px;
+    align-items: center;
+}
+
+
+.banner {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    min-height: 280px;
+    
+}
+
+.banner:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.2);
+}
+
+
+
+.banner h3 {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.banner p {
+    font-size: 0.9em;
+    font-weight: normal;
+    color:#0ec78d;
+    margin-bottom: 20px;
+}
+
+
+.hero-banners .banner-btn {
+    display: flex;
+    align-items: center;
+}
+
+.btn-action.btn-gradient {
+    color: #fff; 
+    background: linear-gradient(90deg, #7b68ee, #00ffff); 
+    padding: 12px 24px; /* বক্সের এরিয়া */
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    /* অন্যান্য transition/hover স্টাইল... */
+}
+
+.banner-footer-actions {
+    display: flex;       /* এটিই পাশাপাশি রাখবে */
+    align-items: center; /* উল্লম্বভাবে মাঝখানে রাখবে */
+    gap: 35px;           /* যথেষ্ট দূরত্ব রাখবে */
+    /* অন্যান্য স্টাইল... */
+}
+/* ========================================================= */
+/* সোশ্যাল লিংক স্টাইল: শুধুমাত্র আইকন (Icons Only) */
+/* ========================================================= */
+.sci a {
+    color: #00ffff; /* আইকনের রং */
+    font-size: 30px;
+    margin: 0 8px; 
+    
+    /* বক্স বাতিল */
+    padding: 0; 
+    border-radius: 0; 
+    background-color: transparent; 
+    
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.sci a:hover {
+    color: #7b68ee; 
+    background-color: transparent; /* হোভারেও বক্স থাকবে না */
+}
+
+.banner-btn {
+    display: inline;
+    background: var(--gradient-bg);
+    color: var(--text-color);
+    border: 2px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner-btn a.btn {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+
+.sci {
+    margin-left: 20px; /* বাটন থেকে দূরত্ব */
+}
+
+.sci a {
+    /* কালার ফিক্স: সব আইকনকে সায়ান (#00ffff) করতে */
+    color: #00ffff; 
+    font-size: 30px;
+    margin: 0 8px; 
+    
+    /* বর্ডার-রেডিয়াস ও প্যাডিং যোগ করা */
+    border-radius: 5px; 
+    padding: 5px; /* যাতে বর্ডার-রেডিয়াস দেখা যায় এবং হোভারের জন্য একটি এরিয়া তৈরি হয় */
+    display: inline-block; /* প্যাডিং এবং বর্ডার-রেডিয়াস কার্যকর করতে */
+    
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* নিশ্চিত করুন Boxicons (i ট্যাগ) তাদের parent color ব্যবহার করছে */
+.sci a i {
+    color: inherit; 
+}
+
+.sci a:hover {
+    /* হোভার কালার: বেগুনী */
+    color: #7b68ee; 
+    /* হালকা ব্যাকগ্রাউন্ড কালার যোগ করা হলো যাতে হোভার ইফেক্ট বর্ডার-রেডিয়াসের সাথে দেখা যায় */
+    background-color: rgba(123, 104, 238, 0.1); 
+}
+
+.banner-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(127, 0, 255, 0.4);
+}
+.hero-banners .banner-btn .sci{
+    margin-left: 20px;
+}
+.hero-banners .banner-btn .sci a{
+    display: inline-flex;
+    padding: 8px;
+    border: 2px solid #7cf03d;
+    border-radius: 50%;
+    font-size: 20px;
+    margin: 0 8px;
+}
+
+
+
+/* টাইপিং এফেক্টের জন্য প্রয়োজনীয় স্টাইল */
+/* ========================================================= */
+
+.typing-text {
+    /* ফন্টের আকার এবং রং নিশ্চিত করা */
+    font-family: monospace; /* টাইপিং এফেক্টের জন্য এই ফন্টটি ভালো লাগে */
+    font-size: 18px;
+    
+    /* 🛑 টেক্সট কালার পরিবর্তন করা হলো 🛑 */
+    color: #0ec78d; /* ✨ নতুন উজ্জ্বল সবুজ-সায়ান কালার */
+    
+    /* অ্যানিমেশনের জন্য প্রয়োজনীয় প্রপার্টি */
+    width: 0; /* শুরুতে চওড়া শূন্য রাখা হয় */
+    overflow: hidden; /* কন্টেন্ট ওভারফ্লো হলে লুকিয়ে রাখা হয় */
+    white-space: nowrap; /* লেখাগুলোকে এক লাইনে রাখতে */
+    border-right: 3px solid #00ffff; /* কার্সার এফেক্টের জন্য বর্ডার (সায়ান রং) */
+    
+    /* অ্যানিমেশন প্রয়োগ */
+    animation: 
+        typing 4s steps(50, end) forwards; /* 'typing' অ্যানিমেশন */
+        /* blink অ্যানিমেশনটি জাভাস্ক্রিপ্ট দ্বারা নিয়ন্ত্রণ করা উচিত */
+}
+
+/* ========================================================= */
+/* @keyframes অ্যানিমেশন নিয়মাবলী */
+/* ========================================================= */
+
+/* টাইপিং অ্যানিমেশন: লেখাটিকে ধীরে ধীরে প্রকাশ করে */
+@keyframes typing {
+    from { width: 0 } 
+    to { width: 100% } 
+}
+
+/* কার্সার ব্লিংকিং অ্যানিমেশন */
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #00ffff; } 
+}
+
+
+.code-block code {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    background: linear-gradient(90deg,
+        #ff00ea,
+        #00e1ff,
+        #00ff87,
+        #ffd500,
+        #ff6a00);
+    background-size: 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: aurora 6s infinite linear;
+    white-space: pre-wrap;
+}
+
+@keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+
+
+/* who i am section */
+/* ========================================================= */
+/* 'WHO I AM' সেকশনের মূল কন্টেইনার (.about-section-content) */
+/* ========================================================= */
+.about-section-content {
+    display: flex;         /* টেক্সট এবং ছবি পাশাপাশি রাখতে */
+    flex-wrap: wrap;       /* ছোট স্ক্রিনে নিচের লাইনে যেতে */
+    gap: 50px;             /* টেক্সট ও ছবির মধ্যে দূরত্ব */
+    align-items: center;   /* উল্লম্বভাবে মাঝখানে রাখতে */
+    justify-content: center; /* সেন্টারে রাখতে */
+    max-width: 1200px;     /* সেকশনের সর্বোচ্চ চওড়া */
+    margin: 80px auto;     /* উপরে-নিচে মার্জিন এবং সেন্টারে আনতে */
+    padding: 20px;
+    background-color: #1a1a2e; /* গাঢ় ব্যাকগ্রাউন্ড */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+}
+
+/* ========================================================= */
+/* টেক্সট কন্টেইনার (.about-text-content) স্টাইল             */
+/* ========================================================= */
+.about-text-content {
+    flex: 1;
+    min-width: 350px; 
+    color: #f0f0f0;
+    line-height: 1.6;
+}
+
+.about-text-content .about-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #00ffff; 
+}
+
+.about-text-content p {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.about-text-content .highlight-name {
+    color: #00ffff; 
+    font-weight: 600;
+}
+
+/* ========================================================= */
+/* প্রোফাইল ইমেজ র‍্যাপার (.about-image-wrapper) স্টাইল        */
+/* ========================================================= */
+.about-image-wrapper {
+    width: 350px; 
+    height: 350px; 
+    border-radius: 10px; 
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #7b68ee; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; 
+}
+
+.about-image-wrapper .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
+
+/* ========================================================= */
+/* রেসপনসিভনেস (ছোট স্ক্রিনের জন্য)                         */
+/* ========================================================= */
+@media (max-width: 992px) {
+    .about-section-content {
+        flex-direction: column; 
+        text-align: center;
+        gap: 30px;
+        padding: 20px;
+    }
+    .about-image-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+    .about-text-content {
+        min-width: auto;
+    }
+    .about-text-content p {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-text-content .about-title {
+        font-size: 30px;
+    }
+    .about-text-content p {
+        font-size: 15px;
+    }
+}
+
+/* ===================== */
+/* Aurora Gradient Title */
+/* ===================== */
+.about-text-content .about-title {
+  background: linear-gradient(90deg,
+      #ff00ea,
+      #00e1ff,
+      #00ff87,
+      #ffd500,
+      #ff6a00);
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 6s infinite linear;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* newwwww */
+/* ======================= */
+/* WHO I AM */
+.ideas-section {
+  padding: 100px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-section-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about-text-content {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.highlight-name {
+  color: #1e90ff; /* নতুন কালার */
+  font-weight: bold;
+}
+
+.about-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.profile-img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Typing cursor */
+#aboutText {
+  position: relative;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  display: inline-block;
+}
+
+#aboutText.typing::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #1e90ff; /* cursor color */
+  vertical-align: bottom;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
+
+/* --- আইডিয়া সেকশন --- */
+.ideas-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.gradient-text {
+    /* Set the gradient source */
+    background-image: var(--gradient-main);
+    font-size: clamp(36px, 4vw, 72px); 
+    margin-bottom: 20px;
+    font-weight: 800;
+    
+    /* Clip and transparency */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; 
+    -webkit-text-fill-color: transparent;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.feature-item {
+     position: relative; /* Important for overlay */
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 30px;
+    text-align: left;
+    border-radius: 12px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(123, 104, 238, 0.3);
+    transition: transform 0.35s ease-out, box-shadow 0.35s ease;
+}
+.item1 { background-image: url("railway.png"); }
+.item2 { background-image: url("indoor-vs-outdoor-cameras.jpg"); }
+.item3 { background-image: url("blog_top-image_mn-laptops_100_0501155519.jpg"); }
+.feature-item:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2); 
+}
+.feature-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.45); /* Light dark filter */
+    z-index: 0;
+}
+.feature-item * {
+    position: relative;
+    z-index: 1;
+}
+/* Hover effect same as before */
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+}
+.feature-item h3 {
+    font-size: 20px;
+    color: var(--clr-accent-end); 
+    margin: 15px 0 10px 0;
+}
+
+.feature-item p {
+    color: var(--clr-text-secondary); 
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* আইকন স্টাইল (Gradient) */
+.feature-item .icon {
+    font-size: 32px;
+    background-image: var(--gradient-main); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(90deg, #7b68ee, #00ffff); /* Hardcoded gradient for distinct look */
+    color: var(--clr-text-primary); 
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+
+.feature-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* ========================================================= */
+/* 3. Modal Overlay (The new window) */
+/* ========================================================= */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); 
+    animation: backdropFadeIn 0.3s;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: var(--clr-bg-modal); 
+    margin: 5% auto; 
+    padding: 30px;
+    
+    border: 1px solid #4a4a6b; 
+    
+    width: 90%; 
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+    
+    position: relative;
+    animation: contentSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Close Button */
+.close-btn {
+    color: #aaaaaa;
+    font-size: 40px; 
+    font-weight: 300; 
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--clr-text-primary); 
+    text-decoration: none;
+}
+
+/* --- Modal Body Content (Text + Image Layout) --- */
+.modal-body.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    text-align: left; 
+    padding: 20px 0;
+}
+
+.about-text-content {
+    flex: 1.5; 
+    padding-right: 20px;
+}
+
+.about-image-modal {
+    flex: 1;
+    border: 4px solid #1a1a2e;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(123, 104, 238, 0.7); 
+    overflow: hidden; 
+}
+
+.about-image-modal img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px; 
+}
+
+/* Gradient Title for Modal */
+.about-title-modal {
+    /* Modal Title Gradient (based on modal-accent) */
+    background-image: linear-gradient(90deg, var(--clr-accent-modal), #10e395, #ffffff); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--clr-text-primary); 
+    display: inline-block;
+    
+    font-size: clamp(30px, 4vw, 55px); 
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.about-text-content p {
+    color: #d0d0d0;
+    margin-bottom: 15px;
+    font-size: 17px;
+    line-height: 1.7; 
+}
+
+.about-text-content p strong {
+    color: var(--clr-accent-modal); 
+}
+
+/* Action Button Style (Inside Modal) */
+.btn-action {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--clr-accent-modal); 
+    color: var(--clr-accent-modal); 
+    background: transparent;
+}
+
+.btn-action:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+
+/* ========================================================= */
+/* Modal Contact Icon Styling (বাম দিকে ফ্লোট) */
+/* ========================================================= */
+.modal-contact-icon {
+    /* বাম দিকে ফ্লোট স্টাইল সরানো হলো */
+    /* float: left; */ 
+    
+    display: block; /* পুরো লাইন দখল করবে যাতে টেক্সট নিচে চলে আসে */
+    width: 30px; 
+    height: 30px; 
+    
+    /* আইকনকে ডানদিকে সরাতে */
+    margin-left: auto; /* বাম দিকে মার্জিন অটো, যা এটিকে ডানে ঠেলে দেবে */
+    
+    /* অন্যান্য স্টাইল ঠিক রাখা হলো */
+    font-size: 22px; 
+    color: var(--clr-accent-modal); 
+    border-radius: 50%; 
+    border: 2px solid var(--clr-accent-modal); 
+    margin-top: 25px; 
+    text-decoration: none; 
+    
+    /* ভেতরের আইকনকে মাঝখানে আনতে */
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    
+    transition: all 0.3s ease; 
+}
+
+.modal-contact-icon:hover {
+    color: var(--clr-text-primary); 
+    background-color: var(--clr-accent-modal); 
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5); 
+    transform: translateY(-3px); 
+}
+
+
+/* ========================================================= */
+/* 4. Animations */
+/* ========================================================= */
+@keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes contentSlideIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================= */
+/* 5. Responsive Design */
+/* ========================================================= */
+@media (max-width: 992px) {
+    /* Header Responsive */
+    .main-nav ul {
+        display: none; 
+    }
+    
+    .main-header .container {
+        justify-content: center;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    
+    /* Modal Responsive */
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
+    }
+    
+    .modal-body.about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-image-modal {
+        order: -1; 
+        flex: none;
+        width: 80%; 
+    }
+    .about-text-content {
+        flex: none;
+        padding-right: 0;
+    }
+    .about-title-modal {
+        font-size: 7vw;
+        text-align: center;
+    }
+    .about-text-content p {
+        font-size: 15px;
+        text-align: justify;
+    }
+    .close-btn {
+        font-size: 30px;
+        right: 20px;
+    }
+}
+/* --- পারফরমেন্স ম্যাট্রিক্স সেকশন --- */
+
+
+/* --- টেকনিক্যাল আর্সেনাল সেকশন --- */
+.tech-arsenal {
+    padding: 20px 0;
+}
+
+.tech-arsenal h2 {
+    color: var(--accent-color-start);
+}
+
+.tech-tabs {
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tab-button {
+    background-color: var(--card-bg);
+    color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: var(--gradient-bg);
+    color: var(--text-color);
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(127, 0, 255, 0.3);
+}
+
+.tab-button.active {
+    background: var(--gradient-bg);
+    color: var(--text-color);
+    border-color: transparent;
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
+}
+
+.arsenal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.tech-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+.tech-card:hover {
+    border-color: var(--accent-color-start);
+    box-shadow: 0 0 20px rgba(127, 0, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.tech-icon {
+    font-size: 3em;
+    color: var(--accent-color-end);
+    margin-bottom: 15px;
+}
+
+.tech-card h3 {
+    font-size: 1.2em;
+    color: var(--accent-color-end);
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar div {
+    height: 100%;
+    background: var(--gradient-bg);
+    border-radius: 5px;
+    transition: width 1s ease-out; /* অ্যানিমেশনের জন্য */
+}
+
+
+/* --- কন্টাক্ট সেকশন --- */
+.contact-section {
+    padding: 10px 0;
+    background-color: #0a192f;
+}
+
+.contact-section h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.contact-section .subtitle {
+    margin-bottom: 60px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 2 কলাম, ইনফো ছোট, ফর্ম বড় */
+    gap: 50px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 40px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-item i {
+    font-size: 24px;
+     color: #039BE5;
+    background-color: #2a2a2a;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-item h4 {
+    font-size: 1.1em;
+    color: var(--accent-color-start);
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    color: var(--light-gray);
+    font-size: 0.9em;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    color: var(--light-gray);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 12px 15px;
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color-end);
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
+}
+
+.submit-btn {
+    background: var(--gradient-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(127, 0, 255, 0.4);
+}
+
+
+/* --- রেসপনসিভ ডিজাইন --- */
+@media (max-width: 992px) {
+    .hero-banners {
+        grid-template-columns: 1fr;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .main-nav ul li a {
+        padding: 8px 10px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr; /* ছোট স্ক্রিনে কন্টাক্ট ইনফো এবং ফর্ম একটি কলামে */
+    }
+    .ideas-section h1.gradient-text {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-nav ul {
+        margin-top: 15px;
+    }
+    .arsenal-grid {
+        /* এখানে শেষ অংশটি সম্পূর্ণ করা হলো */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px; /* ছোট স্ক্রিনের জন্য গ্যাপ কমানো যেতে পারে */
+    }
+    /* এর পরে অন্যান্য ছোট স্ক্রিনের স্টাইল */
+}
+
+
+
+
+.metrics-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2টি কলামে ভাগ করা হলো */
+    gap: 20px;
+}
+
+.ideas-section h1.gradient-text {
+    font-size: 2em; /* মূল 3.5em থেকে কমানো হলো */
+}
+
+.contact-grid {
+    padding: 20px;
+}
+.contact-info {
+    gap: 20px;
+}
+section {
+    padding: 50px 0; /* প্যাডিং কমানো */
+}
+
+
+
+
+
+
+/*new add*/
+/* --- এডুকেশন এবং এক্সপেরিয়েন্স সেকশন স্টাইল --- */
+.edu-exp-section {
+    padding: 100px 0;
+     /* background: var(--gradient-bg);  */
+
+}
+.edu-exp-section h2 {
+    color: var(--accent-color-end);
+    margin-bottom: 50px;
+}
+
+.edu-exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* দুটো কার্ড পাশাপাশি থাকবে */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+
+ 
+    
+}
+
+.edu-exp-card {
+    background-color: var(--card-bg); /* #1a1a1a */
+    border: 1px solid var(--border-color); /* #333 */
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    min-height: 250px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edu-exp-card .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ভেতরের আইটেমগুলোকে মাঝখানে আনার জন্য */
+    text-align: center; /* নিশ্চিত করা যে টেক্সটগুলো মাঝখানে আছে */
+}
+
+/* 🎯 হোভার ইফেক্ট */
+.edu-exp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(127, 0, 255, 0.2);
+    border-color: var(--accent-color-start);
+}
+
+.card-title {
+    font-size: 1.1em;
+    color: var(--accent-color-end);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.main-detail {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.sub-detail {
+    font-size: 0.9em;
+    color: var(--light-gray);
+    margin-bottom: 5px;
+}
+
+.extra-detail {
+    font-size: 1em;
+    color: var(--light-gray);
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* 🎯 এক্সপেরিয়েন্স কার্ডের জন্য বিশেষ স্টাইল (আইকন সহ) */
+.experience-card .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.exp-icon {
+    font-size: 2.5em;
+    color: var(--text-color);
+}
+
+
+/* --- রেসপনসিভ ডিজাইন (মোবাইল) --- */
+@media (max-width: 768px) {
+    .edu-exp-grid {
+        grid-template-columns: 1fr; /* ছোট স্ক্রিনে এক কলামে */
+        gap: 25px;
+    }
+    .edu-exp-card {
+        padding: 30px 20px;
+        min-height: auto;
+    }
+    .main-detail {
+        font-size: 1.2em;
+    }
+}
+
+
+
+
+
+
+

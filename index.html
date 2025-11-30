@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <title>Mihad Hasan Sourov</title>
+   <link rel="stylesheet" href="style.css">
+
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+     <header class="main-header">
+        <div class="container">
+            <div class="logo">MIHAD HASAN SOUROV</div>
+            
+<nav class="main-nav">
+  <button id="mobile-menu-btn" style="display:none; font-size:24px; background:none; border:none; cursor:pointer;">☰</button>
+
+  <ul id="nav-list">
+    <li><a href="#mihadhasan/home" class="nav-link">HOME</a></li>    
+    <li><a href="#mihadhasan/about" class="nav-link">PROJECTS</a></li>
+    <li><a href="#mihadhasan/education" class="nav-link">EDUCATION</a></li>
+    <li><a href="#mihadhasan/skill" class="nav-link">SKILLS</a></li>                
+    <li><a href="#mihadhasan/contact" class="nav-link contact-btn">CONTACT</a></li> 
+  </ul>
+</nav>
+
+
+        </div>
+    </header>
+
+    <main>
+    <section id="mihadhasan/home" class="hero-section">
+        <div class="container">
+            <div class="hero-banners">
+                                
+                <div class="banner quantum banner-right" data-aos="fade-up" data-aos-delay="100">
+                
+                     <h3>Hello <br>I am <br>Mihad Hasan Sourov</h3>
+                        <p class="typing-text">Fontend web Developer|Problem Solver| Designer</p>
+                            <div class="banner-footer-actions"> 
+                
+                                <a href="Mihad.pdf" class="btn-action btn-gradient">DOWNLOAD RESUME</a> 
+                                    
+
+                                    <div class="sci"> 
+                                        <a href="https://github.com/Mihad197"><i class='bx bxl-github'></i></a>
+                                        <a href=https://www.linkedin.com/in/mihad-hasan-sourov-10abb2240/?locale=en_US><i class='bx bxl-linkedin' ></i></a>
+                                        <a href=https://www.facebook.com/mihadhasan.sourov><i class="fa-brands fa-facebook"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="banner quantum banner-left" data-aos="fade-up" data-aos-delay="100">
+                        <pre class="code-block mt-4">
+    <code>
+const profile = {
+            name:'Mihad Hasan Sourov',
+            title:'Fontend web Developer|Problem Solver',
+            skills: [
+                'HTML', 'CSS', "JavaScript",
+                'React', 'Laravel', 'Mysql',
+                'Git',
+            ],
+                              hardWorker: true,
+             problemSolver: true,
+             yearsOfExperience: 1, 
+             hireable: function() {
+                                   return (
+                    this.hardWorker &&
+                    this.problemSolver &&
+                    this.skills.length >= 5 &&
+                    this.yearsOfExperience >= 1
+                    );
+                }
+            };        
+    </code>
+            </pre>
+
+                        </div>       
+                            </div>
+                        </div>
+                    </section>
+
+            <section id="i am" class="ideas-section">
+            <div class="container">
+                <div class="about-section-content">    
+                <div class="about-text-content" data-aos="fade-right" data-aos-delay="300">
+                    <h3 class="about-title">WHO I AM</h3>
+                    <p id="aboutText">Hello! I'm <span class="highlight-name">Mihad Hasan Sourov</span>, a passionate Frontend developer specializing in React, Tailwind, Express, and MongoDB. My focus is on making web development faster, easier, and accessible to all developers.</p>
+                    <p>Currently, I'm expanding into backend development to grow as a Fullstack developer and create seamless, robust web applications.</p>
+                    <p>I'm a lifelong learner and innovator, driven by a desire to contribute to the developer community with new ideas and tools that deliver real value.</p>
+                </div>
+                
+                <div class="about-image-wrapper" data-aos="fade-left" data-aos-delay="400">
+                    <img src="./IMG_4399.JPG" alt="Mihad Hasan Sourov Profile Picture" class="profile-img">
+                </div>
+                </div>
+            </div>
+            </section>
+
+<main>
+
+    <section id="mihadhasan/about" class="ideas-section">
+        <div class="container">
+            <h1 class="gradient-text" data-aos="fade-up">I Refract ideas into reality.</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="200">
+                My goal is to create digital experiences through effective design and modern coding that enrich both businesses and users. I don't just write or code; I create solutions.
+            </p>
+<div class="features-grid">
+
+    <div class="feature-item item1" data-aos="zoom-in" data-aos-delay="300">
+        <i class='bx  bx-train'></i> 
+        <h3>PROJECT-1</h3>
+        <p>Railway Online Ticket Booking System</p>
+        <a href="#" onclick="openModal('aboutModal1')" class="feature-btn">View Details</a> 
+    </div>
+
+    <div class="feature-item item2" data-aos="zoom-in" data-aos-delay="400">
+        <i class='bx  bx-camera-alt'></i> 
+        <h3>PROJECT-2</h3>
+        <p>Surveillance Footage Detection</p>
+       <a href="#" onclick="openModal('aboutModal2')" class="feature-btn">View Details</a>
+    </div>
+
+    <div class="feature-item item3" data-aos="zoom-in" data-aos-delay="500">
+        <i class='bx  bxs-cup-hot'></i> 
+        <h3>PROJECT-3</h3>
+        <p>Cyber Cafe Management System</p>
+        <a href="#" onclick="openModal('aboutModal3')" class="feature-btn">View Details</a>
+    </div>
+
+</div>
+
+
+        </div>
+    </section>
+    
+    <!-- MODAL 1 -->
+<div id="aboutModal1" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('aboutModal1')">&times;</span>
+
+        <div class="modal-body about-content">
+            <div class="about-text-content">
+                <h3 class="about-title-modal gradient-text">Railway Ticket System</h3>
+                <p>Summary: Designed and implemented an online railway ticket booking platform that allowed passengers to search for trains, check seat availability, and reserve tickets through a secure web interface. The system included real-time database updates and an integrated payment gateway for seamless transactions. </p>
+            </div>
+
+            <div class="about-image-modal">
+                <img src="railway.png" alt="Railway Project Image">
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- MODAL 2 -->
+<div id="aboutModal2" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('aboutModal2')">&times;</span>
+
+        <div class="modal-body about-content">
+            <div class="about-text-content">
+                <h3 class="about-title-modal gradient-text">Surveillance Detection</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi tempore unde quia. Numquam maxime, culpa unde possimus praesentium nisi nulla quo amet minus adipisci repellat impedit fugiat non hic eius! Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quisquam adipisci iste laborum vero non deserunt aperiam necessitatibus vel perspiciatis quasi qui enim dolorum, voluptatum obcaecati, ducimus inventore saepe accusantium!.</p>
+            </div>
+
+            <div class="about-image-modal">
+                <img src="./indoor-vs-outdoor-cameras.jpg" alt="Surveillance Project Image">
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+<!-- MODAL 3 -->
+<div id="aboutModal3" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('aboutModal3')">&times;</span>
+
+        <div class="modal-body about-content">
+            <div class="about-text-content">
+                <h3 class="about-title-modal gradient-text">Cyber Cafe System</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat numquam reprehenderit aperiam, natus debitis est aut temporibus architecto repellendus ab aliquam amet enim animi in voluptate quos minima, voluptatibus ut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dignissimos quis quam quaerat vel nihil facilis blanditiis sapiente provident deleniti voluptas laborum sunt laudantium nemo impedit repudiandae, cumque nesciunt adipisci.</p>
+            </div>
+
+            <div class="about-image-modal">
+                <img src="./blog_top-image_mn-laptops_100_0501155519.jpg" alt="Cyber Cafe Project Image">
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+
+    </main>
+
+        
+        <section id="mihadhasan/skill" class="tech-arsenal">
+            <div class="container">
+                <h2 data-aos="fade-up">My Technology and Skills</h2>
+                <p class="subtitle" data-aos="fade-up" data-aos-delay="100">My profile-related tools and proficiency levels</p>
+                <div class="tech-tabs" data-aos="fade-up" data-aos-delay="200">
+                    <button class="tab-button active">ALL SKILLS</button>
+                </div>
+                <div class="arsenal-grid">
+                    
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fab fa-react tech-icon"></i>
+                        <h3>REACT.JS</h3>
+                        <div class="progress-bar"><div style="width: 90%;"></div></div>
+                    </div>
+                    
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fab fa-laravel tech-icon"></i>
+                        <h3>LARAVEL</h3>
+                        <div class="progress-bar"><div style="width: 800%;"></div></div>
+                    </div>
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fab fa-js tech-icon" ></i>
+                        <h3>JAVA SCRIPT</h3>
+                        <div class="progress-bar"><div style="width: 90%;"></div></div>
+                    </div>
+                     <div class="tech-card" data-aos="zoom-in" data-aos-delay="300">
+                       <i class="fab fa-typescript tech-icon"></i>
+                        <h3>TYPESCRIPT</h3>
+                        <div class="progress-bar"><div style="width: 75%;"></div></div>
+                    </div>
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fab fa-html5 tech-icon"></i>
+                        <h3>HTML/CSS</h3>
+                        <div class="progress-bar"><div style="width: 95%;"></div></div>
+                    </div>
+                    
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="fas fa-drafting-compass tech-icon"></i>
+                        <h3>ILLUSTRATOR</h3>
+                        <div class="progress-bar"><div style="width: 75%;"></div></div>
+                    </div>
+
+                      <div class="tech-card" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fab fa-figma tech-icon"></i>
+                        <h3>FIGMA</h3>
+                        <div class="progress-bar"><div style="width: 85%;"></div></div>
+                    </div>
+                    
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="500">
+                        <i class="fab fa-google tech-icon"></i>
+                        <h3>GOOGLE ANALYTICS</h3>
+                        <div class="progress-bar"><div style="width: 88%;"></div></div>
+                    </div>
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="600">
+                        <i class="fas fa-search tech-icon"></i>
+                        <h3>SEO (Ahrefs/SEMRush)</h3>
+                        <div class="progress-bar"><div style="width: 92%;"></div></div>
+                    </div>
+
+                  
+                    <div class="tech-card" data-aos="zoom-in" data-aos-delay="800">
+                        <i class="fas fa-database tech-icon"></i> 
+                        <h3>MYSQL</h3>
+                        <div class="progress-bar"><div style="width: 60%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mihadhasan/education" class="edu-exp-section">
+
+            <div class="container">
+                 <div class="tech-tabs" data-aos="fade-up" data-aos-delay="200">
+                    <button class="tab-button active">MY JOURNEY</button>
+                </div>
+
+                <div class="edu-exp-grid">
+                    
+                    <div class="edu-exp-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="content-wrapper">
+                            <div class="icon-circle">
+                                <i class="fas fa-graduation-cap exp-icon"></i> 
+                            </div>
+
+                            <h3 class="card-title">EDUCATION</h3>
+                            <p class="main-detail">B.Sc in Computer Science & Engineering</p>
+                            <p class="sub-detail">University of Global Village</p>
+                            <p class="sub-detail">C & B Road, Barisal </p>
+                            <p class="extra-detail">Graduated with honors, focusing on full-stack development.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-exp-card experience-card" data-aos="fade-left" data-aos-delay="200">
+                        <div class="content-wrapper">
+                            <div class="icon-circle">
+                                <i class="fas fa-briefcase exp-icon"></i>
+                            </div>
+                            <h3 class="card-title">EXPERIENCE</h3>
+                            <p class="main-detail">2+ Years in Web Development & Design</p>
+                        
+                            <p class="extra-detail">Specialized in React, UI/UX, and performance optimization for e-commerce platforms.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+        <section id="mihadhasan/contact" class="contact-section">
+            <div class="container">
+                <h2 data-aos="fade-up">Contact With Me</h2>
+                <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Ready to transform your ideas into reality? Let's connect!</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><h4>LOCATION</h4><p>Malibagh, Dhaka</p></div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><h4>EMAIL</h4><p>sourovmihadhasan@gmail.com</p></div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div><h4>PHONE</h4><p>+880 1767916141</p></div>
+                        </div>
+                        <div class="info-item">
+                           <a href="what's up.com"> <i class="fa-brands fa-whatsapp"></i></a>
+                            <div><p>01767916141</p></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form" data-aos="fade-left" data-aos-delay="200">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">YOUR NAME</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">YOUR EMAIL</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">SUBJECT</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">MESSAGE</label>
+                                <textarea id="message" name="message" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">TRANSMIT MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+   
+   
+    <script src="style.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
